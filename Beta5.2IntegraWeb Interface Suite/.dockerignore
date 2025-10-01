@@ -1,0 +1,15 @@
+# -----------------------------------------------------------------------------
+# .dockerignore
+# Purpose: Reduce Docker build context for faster builds.
+# -----------------------------------------------------------------------------
+node_modules
+dist
+.git
+.github
+.vscode
+.DS_Store
+*.log
+*.local
+.cache
+coverage
+**/*.map

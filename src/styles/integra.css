@@ -1,0 +1,274 @@
+/** 
+ * Integra UI theme stylesheet
+ * Purpose: Centralizes the Integra "Infinite Living Flame" visual identity (colors, font, badges).
+ * Notes: Imported by React pages/components. Mirrors IntegraWebInterface4.1 variables and utility classes.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+
+:root {
+  --integra-bg-dark: #0D121B;
+  --integra-panel-bg: #1A202C;
+  --integra-border-color: #2D3748;
+  --integra-text-primary: #E2E8F0;
+  --integra-text-secondary: #A0AEC0;
+  --integra-interactive-blue: #3182CE;
+  --integra-interactive-hover: #2B6CB0;
+  --integra-progress-bar: #3182CE;
+  --integra-status-active: #38A169;
+  --integra-status-ready: #D69E2E;
+  --integra-status-standby: #A0AEC0;
+  --integra-status-scanning: #DD6B20;
+  --integra-status-synthesizing: #805AD5;
+}
+
+/* Base theme */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--integra-bg-dark);
+  color: var(--integra-text-primary);
+  font-family: 'Orbitron', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Surfaces */
+.panel {
+  background-color: var(--integra-panel-bg);
+  border: 1px solid var(--integra-border-color);
+}
+
+.panel-inset {
+  background-color: var(--integra-bg-dark);
+  border: 1px solid var(--integra-border-color);
+}
+
+/* Buttons and controls */
+.btn-primary {
+  background-color: var(--integra-interactive-blue);
+  color: var(--integra-text-primary);
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--integra-interactive-hover);
+}
+
+.control-btn {
+  background-color: var(--integra-border-color);
+  color: var(--integra-text-secondary);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.control-btn:hover {
+  background-color: var(--integra-interactive-hover);
+  color: var(--integra-text-primary);
+}
+
+.preset-btn {
+  border: 1px solid var(--integra-border-color);
+  color: var(--integra-text-secondary);
+  transition: all 0.15s ease;
+}
+
+.preset-btn:hover {
+  background-color: var(--integra-border-color);
+  color: var(--integra-text-primary);
+}
+
+/* Progress */
+.progress-bar-bg {
+  background-color: var(--integra-border-color);
+}
+
+.progress-bar-fill {
+  background-color: var(--integra-progress-bar);
+}
+
+/* Badges */
+.status-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.status-active {
+  background-color: var(--integra-status-active);
+}
+
+.status-ready {
+  background-color: var(--integra-status-ready);
+}
+
+.status-scanning {
+  background-color: var(--integra-status-scanning);
+}
+
+.status-synthesizing {
+  background-color: var(--integra-status-synthesizing);
+}
+
+.status-standby {
+  background-color: var(--integra-status-standby);
+}
+
+/* Tabs */
+.tab-link {
+  transition: color 0.2s ease, border-color 0.2s ease;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.tab-link.active,
+.tab-link:hover {
+  color: var(--integra-text-primary);
+  border-bottom-color: var(--integra-interactive-blue);
+}
+
+/* Small tags used in capabilities */
+.capability-tag {
+  background-color: var(--integra-border-color);
+  color: var(--integra-text-secondary);
+}
+
+/* Sub-navigation buttons */
+.sub-nav-btn {
+  background-color: var(--integra-panel-bg);
+  border: 1px solid var(--integra-border-color);
+  color: var(--integra-text-secondary);
+  transition: all 0.2s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.sub-nav-btn.active,
+.sub-nav-btn:hover {
+  background-color: var(--integra-interactive-blue);
+  color: var(--integra-text-primary);
+  border-color: var(--integra-interactive-blue);
+}
+
+/* Execution phase pill */
+.exec-phase {
+  background-color: var(--integra-bg-dark);
+  border: 1px solid var(--integra-border-color);
+}
+
+.exec-phase-num {
+  background-color: var(--integra-interactive-blue);
+}
+
+/* Landing (Home) */
+.home-page {
+  min-height: 100vh;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-main-title {
+  font-size: clamp(48px, 7vw, 128px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  color: white;
+  letter-spacing: 0.02em;
+}
+
+.home-main-title:hover {
+  opacity: 0.85;
+}
+
+.home-tagline {
+  font-size: clamp(14px, 1.6vw, 24px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #00FFFF, #FF6600);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF;
+  }
+
+  to {
+    text-shadow: 0 0 10px #00FFFF, 0 0 15px #00FFFF;
+  }
+}
+
+.home-about-link {
+  font-size: clamp(12px, 1.2vw, 18px);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  color: var(--integra-text-secondary);
+}
+
+.home-about-link:hover {
+  opacity: 0.85;
+}
+
+/* About content */
+.about-view {
+  max-width: 900px;
+  width: 100%;
+  padding: 2rem;
+  color: var(--integra-text-primary);
+}
+
+.about-view h2 {
+  font-size: clamp(28px, 2.5rem, 40px);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.about-view h3 {
+  font-size: 1.8rem;
+  margin: 2rem 0 1rem;
+}
+
+.about-view p {
+  line-height: 1.7;
+  color: var(--integra-text-secondary);
+  text-align: justify;
+}
+
+/* Utility classes for Integra theme */
+.text-integra-text-secondary {
+  color: var(--integra-text-secondary);
+}
+
+.border-integra-border {
+  border-color: var(--integra-border-color);
+}
+
+/* News monitoring styles */
+.news-relevance-high {
+  background-color: var(--integra-status-active);
+  color: #fff;
+}
+
+.news-relevance-medium {
+  background-color: var(--integra-status-ready);
+  color: #fff;
+}
+
+.news-relevance-low {
+  background-color: var(--integra-status-standby);
+  color: #fff;
+}

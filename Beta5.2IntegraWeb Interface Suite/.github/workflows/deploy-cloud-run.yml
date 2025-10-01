@@ -1,0 +1,76 @@
+# -----------------------------------------------------------------------------
+# GitHub Actions: Deploy to Cloud Run (Beta)
+# Purpose: Build container, push to Artifact Registry, deploy to Cloud Run.
+# Security: Uses Workload Identity Federation. Alternatively, you can set
+#           a service account JSON key as a GitHub secret (not recommended).
+# -----------------------------------------------------------------------------
+name: Deploy to Cloud Run (beta)
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  REGION: us-central1
+  SERVICE: integra-web-beta
+  REPOSITORY: web-app
+  IMAGE: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.SERVICE }}:${{ github.sha }}
+
+jobs:
+  deploy:
+    permissions:
+      contents: read
+      id-token: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Authenticate to Google Cloud using Workload Identity Federation
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Enable required APIs (idempotent)
+        run: |
+          gcloud services enable \
+            run.googleapis.com \
+            artifactregistry.googleapis.com
+
+      - name: Configure Docker to use Artifact Registry
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      - name: Build image
+        run: docker build -t ${{ env.IMAGE }} .
+
+      - name: Push image
+        run: docker push ${{ env.IMAGE }}
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy ${{ env.SERVICE }} \
+            --image ${{ env.IMAGE }} \
+            --region ${{ env.REGION }} \
+            --platform managed \
+            --allow-unauthenticated \
+            --port 8080 \
+            --max-instances 3 \
+            --cpu 1 \
+            --memory 512Mi
+
+      - name: Output service URL
+        run: gcloud run services describe ${{ env.SERVICE }} --region ${{ env.REGION }} --format 'value(status.url)'
+
+      # Optional: create domain mapping (first-time only) once DNS is verified.
+      # - name: Map custom domain (manual step; see README_DEPLOY.md)
+      #   run: |
+      #     gcloud beta run domain-mappings create \
+      #       --service ${{ env.SERVICE }} \
+      #       --region ${{ env.REGION }} \
+      #       --domain app.yourdomain.com
