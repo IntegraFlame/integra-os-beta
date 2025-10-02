@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integra O/S - Domain Setup Test</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      color: #5cdbff;
+      margin-bottom: 20px;
+    }
+    p {
+      margin: 10px 0;
+    }
+    .container {
+      background-color: #1e1e1e;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(92, 219, 255, 0.3);
+      max-width: 600px;
+    }
+    .glow {
+      text-shadow: 0 0 10px rgba(92, 219, 255, 0.7);
+    }
+    .steps {
+      text-align: left;
+      margin-top: 20px;
+    }
+    .steps li {
+      margin-bottom: 10px;
+    }
+    .status {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #2a2a2a;
+      border-radius: 5px;
+    }
+    code {
+      background-color: #2a2a2a;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="glow">Integra O/S - Custom Domain Test</h1>
+    <p>If you can see this page, the static file hosting is working!</p>
+    
+    <div class="status">
+      <p>Current domain: <script>document.write(window.location.hostname)</script></p>
+      <p>Path: <script>document.write(window.location.pathname)</script></p>
+    </div>
+    
+    <div class="steps">
+      <h2>DNS Setup Checklist:</h2>
+      <ul>
+        <li>✓ CNAME record for www points to integraflame.github.io</li>
+        <li>A records for root domain point to GitHub Pages IPs</li>
+        <li>CNAME file present in repository</li>
+        <li>Custom domain set in GitHub Pages settings</li>
+      </ul>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Domain test page loaded successfully');
+      console.log('Hostname: ' + window.location.hostname);
+      console.log('Path: ' + window.location.pathname);
+    });
+  </script>
+</body>
+</html>
