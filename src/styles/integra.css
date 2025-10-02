@@ -560,6 +560,29 @@ body {
   width: var(--progress-width, 0%);
 }
 
+/* Progress bar utility classes */
+.progress-fill-dynamic {
+  width: var(--progress-width, 0%);
+  transition: width 0.3s ease;
+}
+
+/* Color utilities for consistent styling */
+.text-integra-secondary {
+  color: var(--integra-text-secondary);
+}
+
+.bg-integra-dark {
+  background: var(--integra-bg-dark);
+}
+
+.border-integra {
+  border: 1px solid var(--integra-border-color);
+}
+
+.bg-panel-integra {
+  background: var(--integra-panel-bg);
+  border: 1px solid var(--integra-border-color);
+}
 /* Accessibility utilities */
 .sr-only {
   position: absolute;
