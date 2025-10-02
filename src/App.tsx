@@ -1,3 +1,4 @@
+
 /** 
  * App root
  * Purpose: Provides router shell for the application. We keep a single Home route
@@ -5,14 +6,16 @@
  */
 
 import React from 'react'
-import { HashRouter, Route, Routes } from 'react-router'
-import HomePage from './pages/Home'
+import { HashRouter, Route, Routes } from 'react-router-dom'
+
+// Import the Home component correctly
+import Home from './pages/Home'
 
 export default function App() {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </HashRouter>
   )
