@@ -11,7 +11,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: '/', // For custom domain deployment
+  base: '/integra-os-beta/', // For GitHub Pages subpath deployment
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
