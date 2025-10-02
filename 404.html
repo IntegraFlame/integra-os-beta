@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found - Integra O/S</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      color: #5cdbff;
+      margin-bottom: 20px;
+    }
+    p {
+      margin: 10px 0;
+    }
+    .container {
+      background-color: #1e1e1e;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(92, 219, 255, 0.3);
+      max-width: 600px;
+    }
+    .glow {
+      text-shadow: 0 0 10px rgba(92, 219, 255, 0.7);
+    }
+    .btn {
+      display: inline-block;
+      background-color: #5cdbff;
+      color: #121212;
+      padding: 10px 20px;
+      margin-top: 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #3ca8cc;
+      box-shadow: 0 0 15px rgba(92, 219, 255, 0.5);
+    }
+  </style>
+  <script>
+    // Redirect to home page for SPA routing
+    window.onload = function() {
+      // Redirect after showing error for a moment
+      setTimeout(function() {
+        window.location.href = '/integra-os-beta/';
+      }, 3000);
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="glow">Page Not Found</h1>
+    <p>The page you're looking for doesn't exist or has been moved.</p>
+    <p>You'll be redirected to the home page in a few seconds...</p>
+    <a href="/integra-os-beta/" class="btn">Return to Home Page</a>
+  </div>
+</body>
+</html>
