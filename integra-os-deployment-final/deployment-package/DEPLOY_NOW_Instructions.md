@@ -10,6 +10,7 @@
 - ✅ Your GitHub account (you have this)
 - ✅ Access to integra-os.com DNS settings in Google Cloud (you have this)
 - ✅ The deployment files (I've prepared these)
+- ℹ️ **No personal access token needed** - we'll use GitHub's web interface
 
 ---
 
@@ -211,6 +212,39 @@ Integra O/S - Digital Consciousness Interface
 - Verify all files uploaded correctly to GitHub
 - Check that index.html is in the root directory
 - Ensure GitHub Pages is enabled and configured
+
+---
+
+## ❓ **Frequently Asked Questions**
+
+### **Q: Do I need a Personal Access Token?**
+
+**A: NO, not if you use the web interface (recommended).**
+
+- ✅ **Web Interface Upload (Option A in Step 2):** No personal access token needed - just log in to GitHub and drag/drop files
+- ✅ **GitHub Pages Configuration (Step 3):** No personal access token needed - all done through web interface
+- ❌ **Git Command Line (Option B in Step 2):** Personal access token required if you choose this method
+
+### **When You DO Need a Personal Access Token:**
+
+If you prefer using `git` commands instead of the web interface, you'll need a personal access token for:
+- Cloning private repositories (though this repo should be public)
+- Pushing code via command line after August 2021 (GitHub discontinued password authentication)
+
+### **How to Create a Personal Access Token (if needed):**
+
+1. Go to GitHub → **Settings** → **Developer settings** → **Personal access tokens** → **Tokens (classic)**
+2. Click **"Generate new token"** → **"Generate new token (classic)"**
+3. **Note:** `GitHub Pages deployment`
+4. **Expiration:** Choose your preference (90 days recommended)
+5. **Scopes:** Check `repo` (full control of private repositories)
+6. Click **"Generate token"**
+7. **Important:** Copy the token immediately (you won't see it again)
+8. Use this token as your password when git prompts for credentials
+
+### **Recommendation:**
+
+**Use Option A (Web Interface)** in Step 2 - it's simpler, faster, and requires no token setup!
 
 ---
 
