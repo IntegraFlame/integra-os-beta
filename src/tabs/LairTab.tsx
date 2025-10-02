@@ -5,6 +5,7 @@
  */
 
 import React, { useMemo, useState } from 'react'
+import type { JSX } from 'react'
 
 type ChannelKey = 'heimdall' | 'cheshire' | 'phoenix' | 'dragon' | 'dailyplanet'
 

@@ -5,18 +5,19 @@
  */
 
 import React, { useEffect, useMemo, useState } from 'react'
+import type { JSX } from 'react'
 
 /** Labeled bar row. */
 function BarRow({ label, value, suffix = '%'}: { label: string; value: number; suffix?: string }) {
   return (
-    <div className="grid grid-cols-5 gap-3 items-center">
-      <div className="text-xs col-span-2">{label}</div>
-      <div className="col-span-2">
+    <div className="flex items-center gap-3 w-full">
+      <div className="text-xs min-w-0 flex-shrink-0 w-40">{label}</div>
+      <div className="flex-1 min-w-0">
         <div className="progress-bar-bg w-full h-1.5 rounded-full">
-          <div className="progress-bar-fill h-1.5 rounded-full" style={{ width: `${value}%` }} />
+          <div className="progress-bar-fill h-1.5 rounded-full" style={{ width: `${Math.min(100, value)}%` }} />
         </div>
       </div>
-      <div className="text-xs text-right">{`${value}${suffix}`}</div>
+      <div className="text-xs text-right min-w-0 flex-shrink-0 w-16">{`${value}${suffix}`}</div>
     </div>
   )
 }
@@ -94,32 +95,32 @@ export function MonitoringTab(): JSX.Element {
   }, [cognitiveLoad])
 
   return (
-    <section className="panel rounded-lg p-6">
+    <section className="panel rounded-lg p-6 w-full max-w-full overflow-hidden">
       <h2 className="text-xl font-bold">System Monitoring</h2>
 
       {/* Top status tiles */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
         <div className="panel-inset p-3 rounded-md">
           <div className="text-xs font-bold">Heimdall KRI</div>
-          <div className="text-xs mt-1" style={{ color: 'var(--integra-text-secondary)' }}>
+          <div className="text-xs mt-1 text-secondary">
             CLI: {cognitiveLoad}% • <span className={`status-badge ${heimdallState === 'Green' ? 'status-active' : heimdallState === 'Amber' ? 'status-ready' : 'status-synthesizing'}`}>{heimdallState}</span>
           </div>
         </div>
         <div className="panel-inset p-3 rounded-md">
           <div className="text-xs font-bold">Clocks</div>
-          <div className="text-[11px] mt-1" style={{ color: 'var(--integra-text-secondary)' }}>
+          <div className="text-[11px] mt-1 text-secondary">
             UTC: {utc}
           </div>
-          <div className="text-[11px]" style={{ color: 'var(--integra-text-secondary)' }}>
+          <div className="text-[11px] text-secondary">
             Local: {local}
           </div>
         </div>
         <div className="panel-inset p-3 rounded-md">
           <div className="text-xs font-bold">Logical Clocks</div>
-          <div className="text-[11px] mt-1" style={{ color: 'var(--integra-text-secondary)' }}>
+          <div className="text-[11px] mt-1 text-secondary">
             Lamport: {lamport}
           </div>
-          <div className="text-[11px]" style={{ color: 'var(--integra-text-secondary)' }}>
+          <div className="text-[11px] text-secondary">
             Vector: [{vectorA}, {vectorB}]
           </div>
         </div>
@@ -130,7 +131,7 @@ export function MonitoringTab(): JSX.Element {
       </div>
 
       {/* Metric bars */}
-      <div className="mt-6 space-y-3">
+      <div className="mt-6 space-y-3 w-full max-w-full overflow-hidden">
         <BarRow label="Cognitive Load" value={cognitiveLoad} />
         <BarRow label="Processing Efficiency" value={processingEfficiency} />
         <BarRow label="Response Time" value={responseTime} suffix="ms" />

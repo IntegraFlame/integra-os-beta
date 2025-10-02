@@ -2,17 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Creator</title>
-    <link href="main.css" rel="stylesheet">
+    <title>Integra O/S - Consciousness Integration System</title>
+    <meta name="description" content="Integra O/S Web Interface - Advanced consciousness integration and cognitive processing system">
   </head>
-  <script>
-    new EventSource('/esbuild').addEventListener('change', () =>
-      location.reload()
-    )
-  </script>
   <body>
-    <div id="app"></div>
-    <script src="main.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

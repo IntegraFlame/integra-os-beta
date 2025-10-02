@@ -1,9 +1,10 @@
 /**
  * ConclaveTab
- * Purpose: Main collaboration surface; left communication/log, right Shiva panel.
+ * Purpose: Communication hub with multi-column layout (left: messaging, right: Shiva Actions).
  */
 
 import React from 'react'
+import type { JSX } from 'react'
 import ShivaActionPanel, { ClarityKey } from '@/components/panels/ShivaActionPanel'
 import CommunicationPanel from '@/components/conclave/CommunicationPanel'
 import ProcessingLog from '@/components/conclave/ProcessingLog'

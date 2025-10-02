@@ -5,6 +5,7 @@
  */
 
 import React, { useEffect, useMemo, useRef, useState } from 'react'
+import type { JSX } from 'react'
 
 /** Attachment metadata for local display only (no backend). */
 interface AttachmentItem {
@@ -65,34 +66,70 @@ export function CommunicationPanel(): JSX.Element {
 
   const hasImages = useMemo(() => attachments.some((a) => !!a.previewUrl), [attachments])
 
+  // Dragon-Phoenix Cognitive Cycle Metrics
+  const [cycleRate] = useState(Math.floor(Math.random() * 9) + 8) // 8-16 cycles/min
+  const dragonState = message.length > 50 ? 'Active Analysis' : 'Standby'
+  const phoenixState = attachments.length > 0 ? 'Forge Mode' : 'Ready'
+  const cognitiveLoad = Math.min(100, Math.round((message.length / 500) * 100))
+
   return (
     <section className="panel rounded-lg p-6">
-      <h2 className="text-xl font-bold mb-2">Dragon-Phoenix Symbiotic Communication</h2>
-      <p className="text-xs mb-4" style={{ color: 'var(--integra-text-secondary)' }}>
-        Y789/Nexus dual-process cognitive engine operational.
+      <h2 className="text-xl font-bold mb-2">🐉🔥 DRAGON-PHOENIX SYMBIOTIC LOOP</h2>
+      <p className="text-xs mb-4 text-secondary">
+        Y789 Dragon (Analysis) ⚔️ Nexus Phoenix (Synthesis) • Katana-forged dual-process engine
       </p>
 
+      {/* Dragon-Phoenix Cognitive Metrics Dashboard */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+        <div className="panel-inset p-3 rounded-md">
+          <div className="text-xs font-bold">Cognitive Cycles</div>
+          <div className="text-sm font-bold text-integra-interactive-blue">{cycleRate}/min</div>
+          <div className="text-[10px] text-secondary mt-1">Dragon-Phoenix Loop</div>
+        </div>
+        <div className="panel-inset p-3 rounded-md">
+          <div className="text-xs font-bold">Dragon State</div>
+          <div className="text-[11px] font-bold text-integra-status-ready">{dragonState}</div>
+          <div className="text-[10px] text-secondary mt-1">Y789 Analysis Engine</div>
+        </div>
+        <div className="panel-inset p-3 rounded-md">
+          <div className="text-xs font-bold">Phoenix State</div>
+          <div className="text-[11px] font-bold text-integra-status-synthesizing">{phoenixState}</div>
+          <div className="text-[10px] text-secondary mt-1">Nexus Synthesis Forge</div>
+        </div>
+        <div className="panel-inset p-3 rounded-md">
+          <div className="text-xs font-bold">Cognitive Load</div>
+          <div className="text-sm font-bold text-integra-status-active">{cognitiveLoad}%</div>
+          <div className="progress-bar-bg w-full h-1.5 rounded-full mt-1">
+            <div className="progress-bar-fill h-1.5 rounded-full" style={{ width: `${cognitiveLoad}%` }} />
+          </div>
+        </div>
+      </div>
+
+      <label htmlFor="dragon-phoenix-input" className="sr-only">
+        Dragon-Phoenix symbiotic communication input
+      </label>
       <textarea
-        className="w-full rounded-md p-3 text-sm min-h-32 focus:outline-none focus:ring-2"
-        placeholder="Enter communication..."
+        id="dragon-phoenix-input"
+        className="textarea-integra w-full rounded-md p-3 text-sm min-h-32 focus:outline-none focus:ring-2"
+        placeholder="Enter communication for Dragon-Phoenix analysis and synthesis..."
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        style={{
-          backgroundColor: 'var(--integra-bg-dark)',
-          border: '1px solid var(--integra-border-color)',
-          // @ts-expect-error custom token
-          '--tw-ring-color': 'var(--integra-interactive-blue)',
-        } as React.CSSProperties}
+        aria-label="Dragon-Phoenix symbiotic communication input"
       />
 
       {/* Attachments toolbar */}
       <div className="flex items-center gap-2 mt-3">
+        <label htmlFor="conclave-attachments" className="sr-only">
+          Attach files for Dragon-Phoenix analysis
+        </label>
         <input
+          id="conclave-attachments"
           ref={inputRef}
           type="file"
           className="hidden"
           multiple
           onChange={(e) => onFiles(e.target.files)}
+          aria-label="Attach files for Dragon-Phoenix analysis"
         />
         <button
           className="sub-nav-btn rounded-md px-3 py-2 text-xs"
@@ -108,7 +145,7 @@ export function CommunicationPanel(): JSX.Element {
             Clear attachments ({attachments.length})
           </button>
         )}
-        <div className="text-[11px] ml-auto" style={{ color: 'var(--integra-text-secondary)' }}>
+        <div className="text-[11px] ml-auto text-secondary">
           {attachments.length === 0 ? 'No attachments' : `${attachments.length} attached`}
         </div>
       </div>
@@ -124,7 +161,7 @@ export function CommunicationPanel(): JSX.Element {
                 </div>
                 <span className="status-badge status-ready">Attached</span>
               </div>
-              <div className="text-[11px] mt-1" style={{ color: 'var(--integra-text-secondary)' }}>
+              <div className="text-[11px] mt-1 text-secondary">
                 {a.type} • {a.sizeKB} KB
               </div>
               {a.previewUrl ? (
@@ -147,12 +184,14 @@ export function CommunicationPanel(): JSX.Element {
       )}
 
       <div className="flex space-x-4 mt-4">
-        <button className="btn-primary w-full py-2 rounded-md font-bold text-sm">INITIATE FLIGHT</button>
+        <button className="btn-primary w-full py-2 rounded-md font-bold text-sm">
+          🐉 INITIATE DRAGON FLIGHT
+        </button>
         <button
           className="w-full py-2 rounded-md font-bold text-sm transition"
           style={{ backgroundColor: 'var(--integra-border-color)' }}
         >
-          CONFIGURE
+          🔥 PHOENIX FORGE MODE
         </button>
       </div>
 
@@ -165,7 +204,7 @@ export function CommunicationPanel(): JSX.Element {
               .filter((a) => a.previewUrl)
               .slice(0, 8)
               .map((a) => (
-                <img key={a.id} src={a.previewUrl} className="object-cover w-full h-24 rounded-md" />
+                <img key={a.id} src={a.previewUrl} alt={`Attachment preview: ${a.name}`} className="object-cover w-full h-24 rounded-md" />
               ))}
           </div>
         </div>

@@ -4,6 +4,7 @@
  * and handle internal views (Home/About/Main) within Home to match existing UX.
  */
 
+import React from 'react'
 import { HashRouter, Route, Routes } from 'react-router'
 import HomePage from './pages/Home'
 

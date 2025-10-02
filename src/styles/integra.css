@@ -246,6 +246,32 @@ body {
   line-height: 1.7;
   color: var(--integra-text-secondary);
   text-align: justify;
+  margin-bottom: 1rem;
+  }
+  
+  .about-view ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+    color: var(--integra-text-secondary);
+  }
+  
+  .about-view li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+  
+  .about-view li strong {
+    color: var(--integra-text-primary);
+    font-weight: 600;
+  }
+  
+  .about-signature {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, var(--integra-bg-dark) 0%, var(--integra-panel-bg) 100%);
+    text-shadow: 0 0 10px rgba(49, 130, 206, 0.3);
+  }
+  
+  .about-signature p {
+    margin-bottom: 0.5rem;
 }
 
 /* Utility classes for Integra theme */
@@ -271,4 +297,278 @@ body {
 .news-relevance-low {
   background-color: var(--integra-status-standby);
   color: #fff;
+}
+/* Monitoring tab layout fixes */
+.monitoring-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.monitoring-grid {
+  display: grid;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.monitoring-metric-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.monitoring-metric-label {
+  flex-shrink: 0;
+  width: 10rem;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.monitoring-metric-bar {
+  flex: 1;
+  min-width: 0;
+}
+
+.monitoring-metric-value {
+  flex-shrink: 0;
+  width: 4rem;
+  text-align: right;
+  min-width: 0;
+}
+
+/* Enhanced FlameTab styles */
+.flame-vitality-indicator {
+  text-align: center;
+}
+
+.flame-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.dragon-phoenix-core {
+  background: linear-gradient(135deg, var(--integra-bg-dark) 0%, var(--integra-panel-bg) 100%);
+}
+
+.connection-row {
+  border: 1px solid var(--integra-border-color);
+}
+
+.connection-type {
+  font-size: 0.6rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.connection-type.data {
+  background-color: var(--integra-interactive-blue);
+  color: white;
+}
+
+.connection-type.control {
+  background-color: var(--integra-status-ready);
+  color: white;
+}
+
+.connection-type.synthesis {
+  background-color: var(--integra-status-synthesizing);
+  color: white;
+}
+
+.priority-critical {
+  background-color: var(--integra-status-active);
+  color: white;
+}
+
+.priority-high {
+  background-color: var(--integra-status-ready);
+  color: white;
+}
+
+.priority-normal {
+  background-color: var(--integra-status-standby);
+  color: white;
+}
+
+.priority-low {
+  background-color: var(--integra-border-color);
+  color: var(--integra-text-secondary);
+}
+
+/* Enhanced text utility classes */
+.text-integra-text-secondary {
+  color: var(--integra-text-secondary);
+}
+
+.bg-integra-panel-bg {
+  background-color: var(--integra-panel-bg);
+}
+
+.border-integra-border {
+  border-color: var(--integra-border-color);
+}
+
+.bg-integra-border-color {
+  background-color: var(--integra-border-color);
+}
+
+/* Enhanced Flame tab animations and transitions */
+.phoenix-forge-active {
+  background: linear-gradient(135deg, rgba(34, 95, 187, 0.1), rgba(255, 140, 0, 0.1));
+  border: 1px solid rgba(255, 140, 0, 0.3);
+}
+
+.phoenix-glow {
+  color: rgb(255, 140, 0);
+  text-shadow: 0 0 8px rgba(255, 140, 0, 0.5);
+}
+
+.harmony-wave {
+  transition: color 0.5s ease;
+}
+
+.harmony-peak {
+  color: rgb(34, 95, 187);
+  font-weight: bold;
+}
+
+.data-flowing {
+  border-left: 3px solid rgb(34, 95, 187);
+  background: linear-gradient(90deg, rgba(34, 95, 187, 0.1), transparent);
+}
+
+.connection-arrow.flowing {
+  color: rgb(34, 95, 187);
+  animation: arrow-flow 1.5s ease-in-out infinite;
+}
+
+@keyframes arrow-flow {
+
+  0%,
+  100% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(3px);
+  }
+}
+
+.data-flow-indicator {
+  animation: data-pulse 2s ease-in-out infinite;
+}
+
+@keyframes data-pulse {
+
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.smooth-transition {
+  transition: all 0.3s ease;
+}
+
+/* Utility classes to replace inline styles */
+.text-secondary {
+  color: var(--integra-text-secondary);
+}
+
+.bg-panel-dark {
+  background: var(--integra-bg-dark);
+}
+
+.border-integra {
+  border: 1px solid var(--integra-border-color);
+}
+
+.bg-panel-with-border {
+  background: var(--integra-bg-dark);
+  border: 1px solid var(--integra-border-color);
+}
+
+.progress-bar-dynamic {
+  width: var(--progress-width, 0%);
+}
+
+.header-gradient {
+  background: linear-gradient(135deg, var(--integra-bg-dark) 0%, #1A202C 50%, var(--integra-bg-dark) 100%);
+  border-bottom: 1px solid var(--integra-border-color);
+}
+
+.nav-border {
+  border-bottom: 1px solid var(--integra-border-color);
+}
+
+.btn-danger {
+  background: #E53E3E;
+  color: white;
+  border: 1px solid #C53030;
+}
+
+.btn-danger:hover {
+  background: #C53030;
+}
+
+/* Input and form controls */
+.input-integra {
+  border-color: var(--integra-border-color);
+}
+
+.textarea-integra {
+  background-color: var(--integra-bg-dark);
+  border: 1px solid var(--integra-border-color);
+  --tw-ring-color: var(--integra-interactive-blue);
+}
+
+/* Card and container styles */
+.card-integra {
+  background: var(--integra-bg-dark);
+  border: 1px solid var(--integra-border-color);
+}
+
+/* Protocol header styles */
+.protocol-header-bg {
+  background: linear-gradient(to right, var(--integra-panel-bg), var(--integra-bg-dark));
+}
+
+/* Progress bar utilities */
+.progress-bar-dynamic {
+  width: var(--progress-width, 0%);
+}
+
+/* Accessibility utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

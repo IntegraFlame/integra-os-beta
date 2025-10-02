@@ -4,6 +4,7 @@
  */
 
 import React from 'react'
+import type { JSX } from 'react'
 
 /** Clamp helper to keep values in [0, 100]. */
 function clamp01(value: number): number {
@@ -35,7 +36,7 @@ export function EyeClarityCard({ spec, clarity, setClarity }: EyeClarityCardProp
         <h4 className="font-bold text-sm">{spec.name}</h4>
         <span className={`status-badge ${spec.statusClass}`}>{spec.status}</span>
       </div>
-      <p className="text-xs mt-1" style={{ color: 'var(--integra-text-secondary)' }}>
+      <p className="text-xs mt-1 text-secondary">
         {spec.description}
       </p>
 
@@ -54,8 +55,7 @@ export function EyeClarityCard({ spec, clarity, setClarity }: EyeClarityCardProp
               value={clarity}
               aria-label={`${spec.name} clarity`}
               onChange={(e) => setClarity(clamp01(Number(e.target.value) || 0))}
-              className="w-12 text-center text-sm bg-transparent border rounded px-1"
-              style={{ borderColor: 'var(--integra-border-color)' }}
+              className="w-12 text-center text-sm bg-transparent border rounded px-1 input-integra"
             />
             <button className="control-btn w-6 h-6 rounded text-xs" onClick={() => setClarity(clamp01(clarity + 1))}>
               +1

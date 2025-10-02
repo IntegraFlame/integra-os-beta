@@ -5,6 +5,7 @@
  */
 
 import React, { useEffect, useState } from 'react'
+import type { JSX } from 'react'
 
 /** Display a ticking clock string. */
 function useClock(): string {
@@ -20,18 +21,17 @@ function useClock(): string {
 export function HeaderBar(): JSX.Element {
   const time = useClock()
   return (
-    <header
-      className="flex flex-col md:flex-row justify-between items-center pb-4 mb-6 border-b"
-      style={{ borderColor: 'var(--integra-border-color)' }}
+        <header
+      className="header-gradient flex flex-col md:flex-row md:items-center justify-between p-6 space-y-2 md:space-y-0"
     >
       <div className="flex items-center space-x-2">
         <h1 className="text-3xl font-bold">Integra</h1>
-        <p className="text-sm font-light pt-2" style={{ color: 'var(--integra-text-secondary)' }}>
+        <p className="text-sm font-light pt-2 text-secondary">
           INFINITE LIVING FLAME
         </p>
       </div>
 
-      <div className="flex items-center space-x-4 text-xs mt-4 md:mt-0" style={{ color: 'var(--integra-text-secondary)' }}>
+      <div className="flex items-center space-x-4 text-xs mt-4 md:mt-0 text-secondary">
         <p>
           <span className="text-green-400">●</span> DRAGON: ACTIVE
         </p>

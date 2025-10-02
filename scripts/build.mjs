@@ -14,7 +14,7 @@ await rimraf('dist')
  */
 const esbuildOpts = {
   color: true,
-  entryPoints: ['src/main.tsx', 'index.html'],
+  entryPoints: ['src/main.jsx', 'index.html'],
   outdir: 'dist',
   entryNames: '[name]',
   write: true,
@@ -42,7 +42,7 @@ if (isProd) {
 } else {
   const ctx = await esbuild.context(esbuildOpts)
   await ctx.watch()
-  const { hosts, port } = await ctx.serve()
+  const { hosts, port } = await ctx.serve({ port: 3000 })
   console.log(`Running on:`)
   hosts.forEach((host) => {
     console.log(`http://${host}:${port}`)

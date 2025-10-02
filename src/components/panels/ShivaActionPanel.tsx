@@ -4,6 +4,7 @@
  */
 
 import React, { useMemo } from 'react'
+import type { JSX } from 'react'
 import EyeClarityCard, { EyeSpec } from '@/components/shiva/EyeClarityCard'
 import LensesGrid, { LensSpec } from '@/components/shiva/LensesGrid'
 import ProtocolsList, { ProtocolSpec } from '@/components/shiva/ProtocolsList'
@@ -56,7 +57,7 @@ export function ShivaActionPanel({ clarity, setClarity }: ShivaActionPanelProps)
   return (
     <section className="panel rounded-lg p-6">
       <h2 className="text-2xl font-bold">Shiva Action - Cognitive Immune System</h2>
-      <p className="text-sm mt-1 mb-6" style={{ color: 'var(--integra-text-secondary)' }}>
+      <p className="text-sm mt-1 mb-6 text-secondary">
         Critical deconstruction and creative reconstruction.
       </p>
 

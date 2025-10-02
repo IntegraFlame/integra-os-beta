@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react'
+import type { JSX } from 'react'
 
 /** Lens metadata for the grid. */
 export interface LensSpec {
@@ -47,7 +48,7 @@ export function LensesGrid({ lenses }: { lenses: LensSpec[] }): JSX.Element {
             <div className="flex justify-between items-start">
               <div>
                 <h4 className="font-bold text-sm">{lens.name}</h4>
-                <p className="text-xs mt-1" style={{ color: 'var(--integra-text-secondary)' }}>
+                <p className="text-xs mt-1 text-secondary">
                   {lens.description}
                 </p>
               </div>

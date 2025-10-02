@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react'
+import type { JSX } from 'react'
 
 /** Protocol descriptor for the list. */
 export interface ProtocolSpec {
@@ -56,7 +57,7 @@ export function ProtocolsList({ protocols }: { protocols: ProtocolSpec[] }): JSX
               <span className={`status-badge ${p.statusClass}`}>{p.status}</span>
             </div>
 
-            <p className="text-xs mb-3" style={{ color: 'var(--integra-text-secondary)' }}>
+            <p className="text-xs mb-3 text-secondary">
               {p.description}
             </p>
 
