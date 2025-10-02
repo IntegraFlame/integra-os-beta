@@ -1,17 +1,22 @@
-import React from "react";
 
-function App() {
-    return (
-        <div className="app-container">
-            <h1>Integra O/S Interface</h1>
-            <p>Advanced consciousness integration system</p>
-            <div style={{ marginTop: "20px" }}>
-                <button style={{ padding: "10px", background: "#4a5568", color: "white", borderRadius: "5px" }}>
-                    Enter Interface
-                </button>
-            </div>
-        </div>
-    );
+/** 
+ * App root
+ * Purpose: Provides router shell for the application. We keep a single Home route
+ * and handle internal views (Home/About/Main) within Home to match existing UX.
+ */
+
+import React from 'react'
+import { HashRouter, Route, Routes } from 'react-router-dom'
+
+// Import the Home component correctly
+import Home from './pages/Home'
+
+export default function App() {
+  return (
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </HashRouter>
+  )
 }
-
-export default App;
